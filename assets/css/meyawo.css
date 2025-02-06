@@ -1,12 +1,10 @@
 @charset "UTF-8";
 /*!
 =========================================================
-* Meyawo Landing page
+* tatsv Landing page
 =========================================================
 
-* Copyright: 2019 DevCRUD (https://devcrud.com)
-* Licensed: (https://devcrud.com/licenses)
-* Coded by www.devcrud.com
+* Copyright: 2025 tatsv
 
 =========================================================
 
@@ -11238,8 +11236,8 @@ p {
 .portfolio-card:hover .portfolio-card-overlay {
   opacity: 1;
   visibility: visible;
-  width: 100%;
-  height: 100%;
+  width: 170%;
+  height: 120%;
   border-radius: 0;
 }
 

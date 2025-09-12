@@ -13,98 +13,93 @@ $currentYear = date('Y');
 </head>
 <body>
     <header id="home">
-        <nav class="navbar">
+        <nav>
             <div class="logo">Tatsv</div>
-            <ul class="nav-menu">
+            <ul>
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
         <div class="hero">
-            <canvas id="three-canvas"></canvas>
+            <canvas id="three-canvas"></canvas> <!-- 3D Canvas -->
             <div class="hero-content">
                 <h1>Crafting Digital Success with Code, Creativity & Enterprise Solutions</h1>
-                <p>Transforming ideas into scalable websites, stunning graphics, and SAP-powered applications</p>
-                <a href="#services" class="btn">Discover More</a>
+                <p>Transforming ideas into scalable websites, stunning graphics, and SAP-powered applications by Tim Wafula</p>
             </div>
         </div>
     </header>
 
-    <div class="container">
-        <main>
-            <section id="services" class="services">
-                <h2>Our Services</h2>
-                <div class="service-grid">
-                    <div class="service-item">
-                        <i class="fas fa-paint-brush"></i>
-                        <h3>Web Design</h3>
-                        <p>Crafting visually stunning, user-friendly designs.</p>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-code"></i>
-                        <h3>Web Development</h3>
-                        <p>Building robust websites with PHP and MySQL.</p>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-search"></i>
-                        <h3>Web Audit</h3>
-                        <p>Optimizing performance and security.</p>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>SEO Optimization</h3>
-                        <p>Boosting visibility with proven strategies.</p>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-image"></i>
-                        <h3>Graphics Design</h3>
-                        <p>Creating captivating visuals and branding.</p>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-cogs"></i>
-                        <h3>SAP Solutions</h3>
-                        <p>Customizing SAP for enterprise efficiency.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="projects" class="projects">
-                <h2>Our Projects</h2>
-                <div class="project-grid">
-                    <div class="project-item">
-                        <img src="https://images.unsplash.com/photo-1516321310760-79f3515ab6e7" alt="Business Website">
-                        <h3>Business Website</h3>
-                        <p>A modern corporate site with seamless UX.</p>
-                    </div>
-                    <div class="project-item">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="E-Commerce Platform">
-                        <h3>E-Commerce Platform</h3>
-                        <p>Scalable online store with secure payments.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <aside id="testimonials" class="sidebar">
-            <h2>Testimonials</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-item">
-                    <p>"Tim transformed our website with unmatched expertise."</p>
-                    <h4>Joab Silicho</h4>
-                </div>
-                <div class="testimonial-item">
-                    <p>"Top-notch skills and a visually appealing site."</p>
-                    <h4>Boniface Makokha</h4>
-                </div>
+    <section id="projects" class="projects">
+        <h2>Our Insightful Projects</h2>
+        <p>Building responsive, robust digital experiences with PHP, JavaScript, MySQL, graphics, and SAP for clients who dare to innovate.</p>
+        <div class="project-grid">
+            <div class="project">
+                <img src="https://images.unsplash.com/photo-1516321310760-79f3515ab6e7" alt="Project 1">
+                <h3>Business Website</h3>
+                <p>A modern corporate site with seamless UX.</p>
             </div>
-        </aside>
-    </div>
+            <div class="project">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Project 2">
+                <h3>E-Commerce Platform</h3>
+                <p>Scalable online store with secure payments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities" class="capabilities">
+        <h2>Our Capabilities</h2>
+        <p>From design to deployment, we deliver tailored solutions using cutting-edge technologies.</p>
+        <div class="service-grid">
+            <div class="service">
+                <h3><i class="fas fa-paint-brush"></i> Web Design</h3>
+                <p>Crafting visually stunning, user-friendly designs for seamless experiences.</p>
+            </div>
+            <div class="service">
+                <h3><i class="fas fa-code"></i> Web Development</h3>
+                <p>Building robust, scalable websites with PHP, CodeIgniter, and MySQL.</p>
+            </div>
+            <div class="service">
+                <h3><i class="fas fa-search"></i> Web Audit</h3>
+                <p>Assessing performance, security, and usability to optimize your site.</p>
+            </div>
+            <div class="service">
+                <h3><i class="fas fa-chart-line"></i> SEO Optimization</h3>
+                <p>Boosting visibility and rankings with proven SEO strategies.</p>
+            </div>
+            <div class="service">
+                <h3><i class="fas fa-image"></i> Graphics Design</h3>
+                <p>Creating captivating visuals and branding materials with cutting-edge graphic tools.</p>
+            </div>
+            <div class="service">
+                <h3><i class="fas fa-cogs"></i> SAP Solutions</h3>
+                <p>Implementing and customizing SAP systems for enterprise efficiency and innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>What Clients Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"Tim transformed our outdated website into a modern, user-friendly platform. His expertise and dedication are unmatched."</p>
+                <h4>Joab Silicho</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Tim’s professionalism and technical skills are top-notch. The website is visually appealing and highly functional."</p>
+                <h4>Boniface Makokha</h4>
+            </div>
+            <div class="testimonial">
+                <p>"I highly recommend Tim for anyone seeking quality and professionalism in web development."</p>
+                <h4>Douglas Wekesa</h4>
+            </div>
+        </div>
+    </section>
 
     <section id="contact" class="contact">
-        <h2>Get in Touch</h2>
+        <h2>Let's Build Something Amazing</h2>
         <p>Contact us at <a href="mailto:tastvdev@gmail.com">tastvdev@gmail.com</a> or call +254780402660</p>
         <form action="contact.php" method="POST">
             <input type="text" name="name" placeholder="Your Name" required>
@@ -112,11 +107,13 @@ $currentYear = date('Y');
             <textarea name="message" placeholder="Your Message" required></textarea>
             <button type="submit" class="btn">Send Message</button>
         </form>
+        <p class="tagline">CREATIVE | TECHNICAL | RELIABLE</p>
+        <a href="#home" class="scroll-top">Scroll to Top</a>
     </section>
 
     <footer>
-        <p>&copy; <?php echo $currentYear; ?> Tatsv. All rights reserved. Designed by <a href="https://tatsv.github.io/tatsv.dev">tatsv.dev</a></p>
-        <p>Juja, Kiambu, Kenya | +254780402660</p>
+        <p>&copy; <?php echo $currentYear; ?> Tatsv. All rights reserved. <br>Designed by <a href="https://tatsv.github.io/tatsv.dev">tatsv.dev</a></p>
+        <p>Juja, Kiambu, Kenya</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>

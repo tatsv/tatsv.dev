@@ -1,38 +1,76 @@
-/*!
-=========================================================
-* Meyawo Landing page
-=========================================================
+// Three.js 3D Setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 400, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+renderer.setSize(window.innerWidth, 400);
 
-* Copyright: 2019 DevCRUD (https://devcrud.com)
-* Licensed: (https://devcrud.com/licenses)
-* Coded by www.devcrud.com
+const geometry = new THREE.TorusGeometry(1, 0.4, 16, 100); // Torus for circuitry effect
+const material = new THREE.MeshBasicMaterial({ color: 0x00A8E8, wireframe: true });
+const torus = new THREE.Mesh(geometry, material);
+scene.add(torus);
 
-=========================================================
+camera.position.z = 5;
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
+function animate() {
+    requestAnimationFrame(animate);
+    torus.rotation.x += 0.01;
+    torus.rotation.y += 0.01;
+    renderer.render(scene, camera);
+}
+animate();
 
-// smooth scroll
-$(document).ready(function(){
-    $(".navbar .nav-link").on('click', function(event) {
+// Resize handler
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / 400;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, 400);
+});
 
-        if (this.hash !== "") {
+// GSAP Animations
+gsap.registerPlugin();
 
-            event.preventDefault();
+gsap.from(".hero-content h1", { duration: 1.5, opacity: 0, y: 50, ease: "power2.out", delay: 0.5 });
+gsap.from(".hero-content p", { duration: 1.5, opacity: 0, y: 30, ease: "power2.out", delay: 1 });
 
-            var hash = this.hash;
-
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 700, function(){
-                window.location.hash = hash;
-            });
-        } 
+gsap.utils.toArray("section").forEach(section => {
+    gsap.from(section, {
+        scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power2.out"
     });
 });
 
-// navbar toggle
-$('#nav-toggle').click(function(){
-    $(this).toggleClass('is-active')
-    $('ul.nav').toggleClass('show');
+gsap.from(".nav-link", {
+    scrollTrigger: {
+        trigger: "nav",
+        start: "top top",
+        toggleActions: "play none none reverse"
+    },
+    opacity: 0,
+    y: -20,
+    duration: 1,
+    stagger: 0.1,
+    ease: "power2.out"
 });
+
+// Smooth scroll (unchanged)
+document.querySelectorAll('.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Initialize AOS for additional scroll animations
+AOS.init();

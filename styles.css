@@ -16,7 +16,7 @@ header { padding: 50px 20px; text-align: center; position: relative; }
 .hero { position: relative; min-height: 400px; }
 #three-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 400px; z-index: 1; }
 .hero-content { position: relative; z-index: 2; padding: 20px; }
-.hero h1 { font-size: 3.5rem; margin: 0; color: #00A8E8; }
+.hero h1 { font-size: 3.5rem; margin: 0;  }
 .hero p { font-size: 1.3rem; }
 
 nav { display: flex; justify-content: space-between; padding: 20px; background: rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 100; }

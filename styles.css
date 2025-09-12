@@ -1,32 +1,123 @@
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: #1a1a1a;
-    color: #fff;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+<?php
+$currentYear = date('Y');
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatsv - Crafting Digital Success</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="home">
+        <nav>
+            <div class="logo">Tatsv</div>
+            <ul>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <canvas id="three-canvas"></canvas> <!-- Enhanced 3D Canvas -->
+            <div class="hero-content">
+                <h1>Crafting Digital Success with Code, Creativity & Enterprise Solutions</h1>
+                <p>Transforming ideas into scalable websites, stunning graphics, and SAP-powered applications by Tim Wafula</p>
+                <a href="#services" class="btn">Explore Services</a>
+            </div>
+        </div>
+    </header>
 
-header { padding: 50px 20px; text-align: center; position: relative; }
-.hero { position: relative; min-height: 500px; background: linear-gradient(135deg, #FF4500, #FF8C00); }
-#three-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 500px; z-index: 1; }
-.hero-content { position: relative; z-index: 2; padding: 20px; text-align: center; }
-.hero h1 { font-size: 3.5rem; margin: 0; color: #fff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
-.hero p { font-size: 1.3rem; color: #fff; }
-.btn { background: #FF4500; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; transition: background 0.3s; }
-.btn:hover { background: #FF8C00; }
+    <div class="main-container">
+        <main>
+            <section id="services" class="services">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service">
+                        <h3><i class="fas fa-paint-brush"></i> Web Design</h3>
+                        <p>Crafting visually stunning, user-friendly designs for seamless experiences.</p>
+                    </div>
+                    <div class="service">
+                        <h3><i class="fas fa-code"></i> Web Development</h3>
+                        <p>Building robust, scalable websites with PHP, CodeIgniter, and MySQL.</p>
+                    </div>
+                    <div class="service">
+                        <h3><i class="fas fa-search"></i> Web Audit</h3>
+                        <p>Assessing performance, security, and usability to optimize your site.</p>
+                    </div>
+                    <div class="service">
+                        <h3><i class="fas fa-chart-line"></i> SEO Optimization</h3>
+                        <p>Boosting visibility and rankings with proven SEO strategies.</p>
+                    </div>
+                    <div class="service">
+                        <h3><i class="fas fa-image"></i> Graphics Design</h3>
+                        <p>Creating captivating visuals and branding materials with cutting-edge graphic tools.</p>
+                    </div>
+                    <div class="service">
+                        <h3><i class="fas fa-cogs"></i> SAP Solutions</h3>
+                        <p>Implementing and customizing SAP systems for enterprise efficiency and innovation.</p>
+                    </div>
+                </div>
+            </section>
 
-nav { display: flex; justify-content: space-between; padding: 20px; background: rgba(255, 69, 0, 0.8); position: sticky; top: 0; z-index: 100; }
-nav .logo { font-weight: bold; font-size: 1.5rem; color: #fff; }
-nav ul { list-style: none; display: flex; gap: 20px; margin: 0; }
-nav a { color: #fff; text-decoration: none; transition: color 0.3s; }
-nav a:hover, .nav-link.active { color: #FF8C00; }
+            <section id="projects" class="projects">
+                <h2>Our Insightful Projects</h2>
+                <div class="project-grid">
+                    <div class="project">
+                        <img src="https://images.unsplash.com/photo-1516321310760-79f3515ab6e7" alt="Project 1">
+                        <h3>Business Website</h3>
+                        <p>A modern corporate site with seamless UX.</p>
+                    </div>
+                    <div class="project">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Project 2">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Scalable online store with secure payments.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-.main-container { display: flex; max-width: 1200px; margin: 0 auto; padding: 20px; }
-main { flex: 3; }
-aside.sidebar { flex: 1; padding-left: 20px; }
+        <aside id="testimonials" class="sidebar">
+            <h2>Testimonials</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"Tim transformed our outdated website into a modern, user-friendly platform. His expertise and dedication are unmatched."</p>
+                    <h4>Joab Silicho</h4>
+                </div>
+                <div class="testimonial">
+                    <p>"Tim’s professionalism and technical skills are top-notch. The website is visually appealing and highly functional."</p>
+                    <h4>Boniface Makokha</h4>
+                </div>
+            </div>
+        </aside>
+    </div>
 
-section { padding: 40px 0; }
-.services, .projects, .contact { text-align: center; }
-.service-grid, .project-grid, .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0; }
-.project img { width: 100%; height:
+    <section id="contact" class="contact">
+        <h2>Let's Build Something Amazing</h2>
+        <p>Contact us at <a href="mailto:tastvdev@gmail.com">tastvdev@gmail.com</a> or call +254780402660</p>
+        <form action="contact.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+        <p class="tagline">CREATIVE | TECHNICAL | RELIABLE</p>
+        <a href="#home" class="scroll-top">Scroll to Top</a>
+    </section>
+
+    <footer>
+        <p>&copy; <?php echo $currentYear; ?> Tatsv. All rights reserved. <br>Designed by <a href="https://tatsv.github.io/tatsv.dev">tatsv.dev</a></p>
+        <p>Juja, Kiambu, Kenya</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

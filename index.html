@@ -6,16 +6,19 @@ $currentYear = date('Y');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <title>TATSV - Crafting Digital Success</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header id="home">
-        <nav>
-              <img src="assets/imgs/logo.png" alt="TATSV - Crafting Digital Success" class="logo">
-            <ul>
+        <nav class="navbar">
+            <img src="assets/imgs/logo.png" alt="TATSV - Crafting Digital Success" class="logo">
+            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-list" id="nav-list">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
@@ -24,7 +27,9 @@ $currentYear = date('Y');
             </ul>
         </nav>
         <div class="hero">
-            <canvas id="three-canvas"></canvas> <!-- 3D Canvas -->
+            <div class="canvas-container">
+                <canvas id="three-canvas"></canvas> 
+            </div>
             <div class="hero-content">
                 <h1>Crafting Digital Success with Code, Creativity & Enterprise Solutions</h1>
                 <p>Transforming ideas into scalable websites, stunning graphics, and SAP-powered applications by Tim Wafula</p>
@@ -34,15 +39,19 @@ $currentYear = date('Y');
 
     <section id="projects" class="projects">
         <h2>Our Insightful Projects</h2>
-        <p>Building responsive, robust digital experiences with PHP, JavaScript, MySQL, graphics, and SAP for clients who dare to innovate.</p>
+        <p class="section-desc">Building responsive, robust digital experiences with PHP, JavaScript, MySQL, graphics, and SAP for clients who dare to innovate.</p>
         <div class="project-grid">
             <div class="project">
-                <img src="https://images.unsplash.com/photo-1516321310760-79f3515ab6e7" alt="Project 1">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1516321310760-79f3515ab6e7" alt="Project 1">
+                </div>
                 <h3>Business Website</h3>
                 <p>A modern corporate site with seamless UX.</p>
             </div>
             <div class="project">
-                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Project 2">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Project 2">
+                </div>
                 <h3>E-Commerce Platform</h3>
                 <p>Scalable online store with secure payments.</p>
             </div>
@@ -51,7 +60,7 @@ $currentYear = date('Y');
 
     <section id="capabilities" class="capabilities">
         <h2>Our Capabilities</h2>
-        <p>From design to deployment, we deliver tailored solutions using cutting-edge technologies.</p>
+        <p class="section-desc">From design to deployment, we deliver tailored solutions using cutting-edge technologies.</p>
         <div class="service-grid">
             <div class="service">
                 <h3><i class="fas fa-paint-brush"></i> Web Design</h3>
@@ -101,7 +110,7 @@ $currentYear = date('Y');
     <section id="contact" class="contact">
         <h2>Let's Build Something Amazing</h2>
         <p>Contact us at <a href="mailto:tastvdev@gmail.com">tastvdev@gmail.com</a> or call +254780402660</p>
-        <form action="contact.php" method="POST">
+        <form action="contact.php" method="POST" class="contact-form">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="message" placeholder="Your Message" required></textarea>

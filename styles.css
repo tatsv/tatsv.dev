@@ -1,34 +1,58 @@
-/* ==========================================
-   CLEAN & RESPONSIVE NAVBAR CORE
-   ========================================== */
-nav {
-    display: flex;
-    justify-content: space-between; /* Pushes logo to left, hamburger to right */
-    align-items: center;            /* Perfectly aligns them vertically */
-    padding: 15px 20px;
-    background-color: #000000;      /* Matches your dark header theme */
-    position: relative;
-    z-index: 1000;
+/* ==========================================================================
+   GLOBAL RESET REMINDER (Ensure this is at the top of your styles.css)
+   ========================================================================== */
+html, body {
+    margin: 0;
+    padding: 0;
     width: 100%;
+    overflow-x: hidden;
     box-sizing: border-box;
 }
+*, *:before, *:after {
+    box-sizing: inherit;
+}
 
-/* Ensure the logo behaves and doesn't push things out */
+/* ==========================================================================
+   GLASSMORPHISM NAVBAR (Desktop Default Layout)
+   ========================================================================== */
+nav {
+    display: flex;
+    justify-content: space-between; /* Logo left, Links right */
+    align-items: center;
+    padding: 15px 40px;            /* Generous padding for desktop look */
+    width: 90%;                    /* Keeps it from stretching completely edge-to-edge */
+    max-width: 1200px;             /* Prevents it from becoming too wide on massive screens */
+    margin: 20px auto;             /* Centers the navbar wrapper on the page */
+    position: fixed;               /* Floats elegantly over the hero canvas */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    
+    /* Premium Glassmorphism styling */
+    background: rgba(255, 255, 255, 0.05);          /* Ultra-translucent white */
+    backdrop-filter: blur(12px);                    /* The magical frosted glass blur effect */
+    -webkit-backdrop-filter: blur(12px);            /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.1);     /* Soft highlight border line */
+    border-radius: 16px;                            /* Sleek rounded capsule appearance */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);    /* Smooth shadow depth over background */
+}
+
+/* Logo Sizing Control */
 .logo {
-    height: 45px;
+    height: 40px;
     width: auto;
-    max-width: 150px;
     display: block;
     object-fit: contain;
 }
 
-/* Base Navigation List Styles (Desktop Default) */
+/* Desktop Navigation Menu Links List */
 nav ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 25px;
+    gap: 30px; /* Clean spatial separation on big displays */
 }
 
 nav ul li a {
@@ -37,10 +61,19 @@ nav ul li a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 0.95rem;
-    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 8px;
 }
 
-/* Hide the toggle button completely on wider screens */
+/* Hover glow effect for premium tech vibe */
+nav ul li a:hover {
+    color: #ff3b30; /* Or matching accent theme color */
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hidden by default on Desktop layout screens */
 .menu-toggle {
     display: none;
     background: none;
@@ -51,32 +84,50 @@ nav ul li a {
     padding: 5px;
 }
 
+/* Push hero section content down slightly so it isn't blocked by fixed navbar */
+.hero {
+    padding-top: 120px; 
+}
 
-/* ==========================================
-   MOBILE BREAKPOINT (Fixes the screenshot bug)
-   ========================================== */
+
+/* ==========================================================================
+   MOBILE RESPONSIVE BREAKPOINT (768px and smaller)
+   ========================================================================== */
 @media (max-width: 768px) {
-    /* Show the hamburger menu button cleanly on the right side */
+    nav {
+        width: 95%;          /* Gives a bit more room on tight mobile widths */
+        padding: 12px 20px;
+        margin: 10px auto;   /* Pulls closer to top edge of viewport */
+        border-radius: 12px;
+    }
+
+    /* Make the mobile hamburger toggle option visible */
     .menu-toggle {
         display: block;
     }
 
-    /* Transform the links into a clean dropdown overlay hidden by default */
+    /* Dropdown structural change for mobile stacking */
     nav ul {
-        display: none; /* Keeps it completely hidden until activated */
+        display: none; /* Keeps hidden until 'active' toggled */
         flex-direction: column;
         position: absolute;
-        top: 100%; /* Sits exactly below the black nav bar */
+        top: calc(100% + 10px); /* Hangs beautifully right under the parent container capsule */
         left: 0;
         width: 100%;
-        background-color: #111111; /* Clean drop-down background match */
-        padding: 20px 0;
-        gap: 20px;
+        gap: 10px;
+        padding: 20px;
         text-align: center;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+        
+        /* Matching Dropdown Mobile Glassmorphism */
+        background: rgba(15, 15, 15, 0.85);            /* Darkened tint for text legibility on phones */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
 
-    /* This class will be added by JavaScript when clicking the hamburger button */
+    /* Triggered by JS layout control click events */
     nav ul.active {
         display: flex;
     }
@@ -87,7 +138,11 @@ nav ul li a {
 
     nav ul li a {
         display: block;
-        padding: 10px 0;
-        font-size: 1.1rem;
+        padding: 12px 0;
+        font-size: 1.05rem;
+    }
+    
+    nav ul li a:hover {
+        background: rgba(255, 255, 255, 0.05);
     }
 }

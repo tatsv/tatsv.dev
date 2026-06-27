@@ -1,133 +1,543 @@
-<?php
-$currentYear = date('Y');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TATSV - Crafting Digital Success</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tatsv — Timothy Wafula Mola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0c;
+    --surface: #111115;
+    --border: #1e1e24;
+    --border-hover: #2e2e38;
+    --text: #f0f0f0;
+    --muted: #5a5a6e;
+    --cyan: #00d4ff;
+    --cyan-dim: #00d4ff18;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  ::selection { background: var(--cyan); color: #000; }
+
+  .port {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 7rem;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4rem;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+    padding-top: 1.5rem;
+    margin-top: -1.5rem;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: .04em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--cyan); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    padding-bottom: 4.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .35; transform: scale(.75); }
+  }
+  .hero-name {
+    font-family: var(--mono);
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.04;
+    color: var(--text);
+  }
+  .cursor {
+    display: inline-block;
+    width: 3px;
+    height: .88em;
+    background: var(--cyan);
+    margin-left: 3px;
+    vertical-align: -.05em;
+    animation: blink 1.1s step-end infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .hero-title {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 1rem;
+    letter-spacing: .03em;
+  }
+  .hero-title span { color: #3a3a50; }
+  .hero-bio {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #80808a;
+    margin-top: 1.5rem;
+    max-width: 560px;
+  }
+  .hero-cta {
+    display: flex;
+    gap: .75rem;
+    margin-top: 2.25rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .08em;
+    padding: .55rem 1.2rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--cyan); color: #000; font-weight: 700; }
+  .btn-primary:hover { background: #33ddff; }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border-hover); }
+  .btn-ghost:hover { color: var(--text); border-color: #4a4a5a; }
+
+  /* SECTIONS */
+  section { padding: 4rem 0 0; }
+  .sec-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--cyan);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+  }
+  .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* SKILLS */
+  .skills-grid { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .skill {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    padding: .3rem .8rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    letter-spacing: .04em;
+    transition: all .18s;
+    cursor: default;
+  }
+  .skill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; }
+  .exp {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp:last-child { border-bottom: none; }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: .5rem;
+  }
+  .exp-role { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--text); }
+  .exp-period { font-family: var(--mono); font-size: 10px; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+  .exp-company { font-size: 12px; color: var(--cyan); margin-bottom: .65rem; font-family: var(--mono); }
+  .exp-desc { font-size: 13px; color: #6a6a80; line-height: 1.75; }
+
+  /* PROJECTS */
+  .proj-grid { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
+  .proj {
+    background: var(--bg);
+    padding: 1.5rem 1.25rem;
+    transition: background .2s;
+  }
+  .proj:hover { background: var(--surface); }
+  .proj:hover .proj-name { color: var(--cyan); }
+  .proj-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: .75rem;
+  }
+  .proj-name {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    transition: color .2s;
+  }
+  .proj-url { font-size: 11px; color: #3a3a55; margin-top: .2rem; font-family: var(--mono); }
+  .proj-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--cyan);
+    text-decoration: none;
+    opacity: .6;
+    transition: opacity .2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .proj-link:hover { opacity: 1; }
+  .proj-desc { font-size: 13px; color: #60606e; line-height: 1.7; margin-top: .65rem; }
+  .proj-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .9rem; }
+  .ptag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    padding: .2rem .55rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    letter-spacing: .05em;
+  }
+
+  /* EDUCATION */
+  .edu-list { display: flex; flex-direction: column; gap: 1rem; }
+  .edu {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+  .edu-deg { font-family: var(--mono); font-size: 13px; color: var(--text); font-weight: 500; }
+  .edu-school { font-size: 12px; color: var(--muted); margin-top: .35rem; }
+  .edu-year { font-family: var(--mono); font-size: 10px; color: var(--cyan); white-space: nowrap; padding-top: 2px; }
+
+  /* ACHIEVEMENTS */
+  .ach-list { display: flex; flex-direction: column; gap: 1.1rem; }
+  .ach { display: flex; gap: 1rem; align-items: flex-start; }
+  .ach-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--cyan);
+    margin-top: .55rem;
+    flex-shrink: 0;
+  }
+  .ach-body { font-size: 13px; color: #6a6a80; line-height: 1.7; }
+  .ach-body strong { color: var(--text); font-weight: 500; }
+
+  /* CONTACT */
+  .contact-row { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  .clink {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    letter-spacing: .04em;
+    transition: color .2s;
+  }
+  .clink:hover { color: var(--cyan); }
+  .clink i { font-size: 15px; }
+
+  /* FOOTER */
+  footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-txt { font-family: var(--mono); font-size: 10px; color: #2e2e42; letter-spacing: .06em; }
+  .footer-txt span { color: var(--cyan); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .port { padding: 1.5rem 1rem 5rem; }
+    nav { padding-bottom: 2.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .edu { flex-direction: column; gap: .5rem; }
+    .exp-header { flex-direction: column; gap: .2rem; }
+    footer { flex-direction: column; }
+  }
+</style>
 </head>
 <body>
-    <header id="home">
-        <nav class="navbar">
-            <img src="assets/imgs/logo.png" alt="TATSV - Crafting Digital Success" class="logo">
-            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-list" id="nav-list">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
-                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hero">
-            <div class="canvas-container">
-                <canvas id="three-canvas"></canvas> 
-            </div>
-            <div class="hero-content">
-                <h1>Crafting Digital Success with Code, Creativity & Enterprise Solutions</h1>
-                <p>Transforming ideas into scalable websites, stunning graphics, and SAP-powered applications by Tim Wafula</p>
-            </div>
+<div class="port">
+
+  <nav>
+    <a class="nav-logo" href="#"><span>//</span> tatsv</a>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero" id="about">
+    <div class="hero-badge"><span class="badge-dot"></span> open to opportunities</div>
+    <div class="hero-name">tatsv<span class="cursor"></span></div>
+    <div class="hero-title">// ICT &amp; Project Manager <span>·</span> IT Operations Specialist <span>·</span> Web Developer</div>
+    <p class="hero-bio">Dynamic IT professional with a BSc in Information Technology from JKUAT, Nairobi. I manage infrastructure, build web platforms, and deliver end-to-end technical solutions — from network cabling and server configuration to WordPress eCommerce and CodeIgniter web apps.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://github.com/tatsv" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i> github.com/tatsv</a>
+      <a class="btn btn-ghost" href="mailto:timmola38@gmail.com"><i class="ti ti-mail"></i> timmola38@gmail.com</a>
+      <a class="btn btn-ghost" href="mailto:tatsvdev@gmail.com"><i class="ti ti-code"></i> tatsvdev@gmail.com</a>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="sec-label">skills &amp; tools</div>
+    <div class="skills-grid">
+      <span class="skill">PHP</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">HTML / CSS</span>
+      <span class="skill">CodeIgniter</span>
+      <span class="skill">WordPress</span>
+      <span class="skill">WooCommerce</span>
+      <span class="skill">MySQL / SQL</span>
+      <span class="skill">LAN / WAN</span>
+      <span class="skill">VPN · DHCP · DNS</span>
+      <span class="skill">TCP/IP</span>
+      <span class="skill">Linux / Ubuntu</span>
+      <span class="skill">Windows Server</span>
+      <span class="skill">Active Directory</span>
+      <span class="skill">AWS · GCP</span>
+      <span class="skill">Microsoft 365</span>
+      <span class="skill">Adobe Photoshop</span>
+      <span class="skill">Canva</span>
+      <span class="skill">FTP · cPanel</span>
+      <span class="skill">SEO</span>
+      <span class="skill">Project Management</span>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="work">
+    <div class="sec-label">experience</div>
+    <div class="exp-list">
+      <div class="exp">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">ICT &amp; Project Manager</div>
+            <div class="exp-company">Dochitech Systems</div>
+          </div>
+          <div class="exp-period">Feb 2025 — present</div>
         </div>
-    </header>
-
-    <section id="projects" class="projects">
-        <h2>Our Insightful Projects</h2>
-        <p class="section-desc">Building responsive, robust digital experiences with PHP, JavaScript, MySQL, graphics, and SAP for clients who dare to innovate.</p>
-        <div class="project-grid">
-            <div class="project">
-                <div class="project-img">
-                    <img src="https://images.unsplash.com/photo-1516321310760-79f3515ab6e7" alt="Project 1">
-                </div>
-                <h3>Business Website</h3>
-                <p>A modern corporate site with seamless UX.</p>
-            </div>
-            <div class="project">
-                <div class="project-img">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Project 2">
-                </div>
-                <h3>E-Commerce Platform</h3>
-                <p>Scalable online store with secure payments.</p>
-            </div>
+        <div class="exp-desc">Manage and maintain a WordPress/WooCommerce eCommerce platform. Diagnose plugin conflicts, PHP errors, and update failures using FTP, debug mode, and error logs. Configure secure staging environments before deployment to minimise downtime. Implement backup strategies using Duplicator, UpdraftPlus, and cPanel. Lead end-to-end project planning, stakeholder coordination, resource allocation, and on-time delivery of infrastructure systems. Support SEO optimisation, email campaigns, and digital marketing using Canva and Adobe Photoshop.</div>
+      </div>
+      <div class="exp">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Attaché — ICT Directorate (ISS)</div>
+            <div class="exp-company">JKUAT</div>
+          </div>
+          <div class="exp-period">Aug – Nov 2023</div>
         </div>
-    </section>
-
-    <section id="capabilities" class="capabilities">
-        <h2>Our Capabilities</h2>
-        <p class="section-desc">From design to deployment, we deliver tailored solutions using cutting-edge technologies.</p>
-        <div class="service-grid">
-            <div class="service">
-                <h3><i class="fas fa-paint-brush"></i> Web Design</h3>
-                <p>Crafting visually stunning, user-friendly designs for seamless experiences.</p>
-            </div>
-            <div class="service">
-                <h3><i class="fas fa-code"></i> Web Development</h3>
-                <p>Building robust, scalable websites with PHP, CodeIgniter, and MySQL.</p>
-            </div>
-            <div class="service">
-                <h3><i class="fas fa-search"></i> Web Audit</h3>
-                <p>Assessing performance, security, and usability to optimize your site.</p>
-            </div>
-            <div class="service">
-                <h3><i class="fas fa-chart-line"></i> SEO Optimization</h3>
-                <p>Boosting visibility and rankings with proven SEO strategies.</p>
-            </div>
-            <div class="service">
-                <h3><i class="fas fa-image"></i> Graphics Design</h3>
-                <p>Creating captivating visuals and branding materials with cutting-edge graphic tools.</p>
-            </div>
-            <div class="service">
-                <h3><i class="fas fa-cogs"></i> SAP Solutions</h3>
-                <p>Implementing and customizing SAP systems for enterprise efficiency and innovation.</p>
-            </div>
+        <div class="exp-desc">Network installation, troubleshooting, and maintenance — trunking, splicing, cable laying, switch configuration, access point setup, and cabinet assembly. Installed and configured DNS, Active Directory, and DHCP servers on Windows Server and Ubuntu Server (ESXi virtualisation). Provided user support for PCs, printers, and operating systems. Conducted regular system audits and backups to maintain data integrity.</div>
+      </div>
+      <div class="exp">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Web Developer</div>
+            <div class="exp-company">Freelance</div>
+          </div>
+          <div class="exp-period">Ongoing</div>
         </div>
-    </section>
-
-    <section id="testimonials" class="testimonials">
-        <h2>What Clients Say</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial">
-                <p>"Tim transformed our outdated website into a modern, user-friendly platform. His expertise and dedication are unmatched."</p>
-                <h4>Joab Silicho</h4>
-            </div>
-            <div class="testimonial">
-                <p>"Tim’s professionalism and technical skills are top-notch. The website is visually appealing and highly functional."</p>
-                <h4>Boniface Makokha</h4>
-            </div>
-            <div class="testimonial">
-                <p>"I highly recommend Tim for anyone seeking quality and professionalism in web development."</p>
-                <h4>Douglas Wekesa</h4>
-            </div>
+        <div class="exp-desc">Design and develop responsive web applications using CodeIgniter. Administer and optimise MySQL databases for data integrity, security, and fast query performance. Provide ongoing technical support for system performance, network connectivity, and software issues across client environments.</div>
+      </div>
+      <div class="exp">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Attaché — ICT Department</div>
+            <div class="exp-company">Busia County Government</div>
+          </div>
+          <div class="exp-period">2019</div>
         </div>
-    </section>
+        <div class="exp-desc">Maintained internal LAN infrastructure, TCP/IP routing and switching. Hardware repair and servicing. Provided IT support across Windows, Ubuntu, and Linux environments. Collaborated with specialists to maintain optimal workflow for the IT infrastructure and developed project concepts.</div>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="contact">
-        <h2>Let's Build Something Amazing</h2>
-        <p>Contact us at <a href="mailto:tastvdev@gmail.com">tastvdev@gmail.com</a> or call +254780402660</p>
-        <form action="contact.php" method="POST" class="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
-        <p class="tagline">CREATIVE | TECHNICAL | RELIABLE</p>
-        <a href="#home" class="scroll-top">Scroll to Top</a>
-    </section>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-label">live projects</div>
+    <div class="proj-grid">
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <div class="proj-name">Afrilinkss</div>
+            <div class="proj-url">afrilinkss.com</div>
+          </div>
+          <a class="proj-link" href="https://afrilinkss.com/" target="_blank" rel="noopener">visit <i class="ti ti-arrow-up-right"></i></a>
+        </div>
+        <div class="proj-desc">Live web platform designed and developed for a client. Built with a focus on responsive design, performance optimisation, and reliable hosting management.</div>
+        <div class="proj-tags"><span class="ptag">WordPress</span><span class="ptag">PHP</span><span class="ptag">MySQL</span><span class="ptag">cPanel</span></div>
+      </div>
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <div class="proj-name">Precision Mark Builders</div>
+            <div class="proj-url">precisionmarkbuilders.com</div>
+          </div>
+          <a class="proj-link" href="https://precisionmarkbuilders.com/" target="_blank" rel="noopener">visit <i class="ti ti-arrow-up-right"></i></a>
+        </div>
+        <div class="proj-desc">Corporate website for a construction and building services firm. Delivered a professional web presence with clear service sections, contact integration, and SEO foundations.</div>
+        <div class="proj-tags"><span class="ptag">WordPress</span><span class="ptag">Elementor</span><span class="ptag">WPForms</span><span class="ptag">SEO</span></div>
+      </div>
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <div class="proj-name">Kodawari Technologies</div>
+            <div class="proj-url">kodawaritechnologies.com</div>
+          </div>
+          <a class="proj-link" href="https://kodawaritechnologies.com/" target="_blank" rel="noopener">visit <i class="ti ti-arrow-up-right"></i></a>
+        </div>
+        <div class="proj-desc">Technology company website. Full site development including plugin management, performance tuning, security hardening, and WooCommerce integration.</div>
+        <div class="proj-tags"><span class="ptag">WordPress</span><span class="ptag">WooCommerce</span><span class="ptag">PHP</span><span class="ptag">UpdraftPlus</span></div>
+      </div>
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <div class="proj-name">More on GitHub</div>
+            <div class="proj-url">github.com/tatsv</div>
+          </div>
+          <a class="proj-link" href="https://github.com/tatsv" target="_blank" rel="noopener">view all <i class="ti ti-arrow-up-right"></i></a>
+        </div>
+        <div class="proj-desc">Additional repositories including CodeIgniter web apps, MySQL database projects, and utilities available on GitHub.</div>
+        <div class="proj-tags"><span class="ptag">CodeIgniter</span><span class="ptag">MySQL</span><span class="ptag">JavaScript</span><span class="ptag">Linux</span></div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; <?php echo $currentYear; ?> Tatsv. All rights reserved. <br>Designed by <a href="https://tatsv.github.io/tatsv.dev">tatsv.dev</a></p>
-        <p>Juja, Kiambu, Kenya</p>
-    </footer>
+  <!-- EDUCATION -->
+  <section>
+    <div class="sec-label">education</div>
+    <div class="edu-list">
+      <div class="edu">
+        <div>
+          <div class="edu-deg">BSc Information Technology — Second Class Honours (Lower Division)</div>
+          <div class="edu-school">Jomo Kenyatta University of Agriculture and Technology (JKUAT)</div>
+        </div>
+        <div class="edu-year">2020 – 2024</div>
+      </div>
+      <div class="edu">
+        <div>
+          <div class="edu-deg">Diploma in Information Technology — Credit</div>
+          <div class="edu-school">Jomo Kenyatta University of Agriculture and Technology (JKUAT)</div>
+        </div>
+        <div class="edu-year">2018 – 2020</div>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="script.js"></script>
+  <!-- ACHIEVEMENTS -->
+  <section>
+    <div class="sec-label">achievements</div>
+    <div class="ach-list">
+      <div class="ach">
+        <div class="ach-dot"></div>
+        <div class="ach-body"><strong>BSc with Honours</strong> — Bachelor of Science in Information Technology, JKUAT (2024). Awarded Second Class Honours (Lower Division).</div>
+      </div>
+      <div class="ach">
+        <div class="ach-dot"></div>
+        <div class="ach-body"><strong>Diploma with Credit</strong> — Diploma in Information Technology, JKUAT (2020). Recommended for progression to degree programme.</div>
+      </div>
+      <div class="ach">
+        <div class="ach-dot"></div>
+        <div class="ach-body"><strong>Commended by JKUAT ICT Director</strong> — Prof. Stephen Kimani formally recognised outstanding performance during the 2023 industrial attachment, noting diligence, teamwork, and technical depth across networking and server administration.</div>
+      </div>
+      <div class="ach">
+        <div class="ach-dot"></div>
+        <div class="ach-body"><strong>3 live client websites delivered</strong> — afrilinkss.com, precisionmarkbuilders.com, and kodawaritechnologies.com built and maintained as freelance projects.</div>
+      </div>
+      <div class="ach">
+        <div class="ach-dot"></div>
+        <div class="ach-body"><strong>ICT &amp; Project Manager, Dochitech Systems</strong> — Currently leading WordPress platform management, digital marketing integration, and infrastructure project delivery (Feb 2025 – present).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sec-label">contact</div>
+    <div class="contact-row">
+      <a class="clink" href="mailto:timmola38@gmail.com"><i class="ti ti-mail"></i> timmola38@gmail.com</a>
+      <a class="clink" href="mailto:tatsvdev@gmail.com"><i class="ti ti-code"></i> tatsvdev@gmail.com</a>
+      <a class="clink" href="https://github.com/tatsv" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i> github.com/tatsv</a>
+      <a class="clink" href="tel:+254740628643"><i class="ti ti-phone"></i> +254 740 628 643</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-txt"><span>tatsv</span> · timothy wafula mola · nairobi, kenya · 2025</div>
+    <div class="footer-txt">built with precision</div>
+  </footer>
+
+</div>
 </body>
 </html>
